@@ -6,6 +6,8 @@ S赛版支持S11–S14四届世界赛、88份战队档案、448份赛季选手�
 
 S赛玩法、评分与模拟边界见 [WORLDS_DESIGN.md](./WORLDS_DESIGN.md)，名单和来源见 [src/worlds/data-notes.md](./src/worlds/data-notes.md)。`src/worlds/App.jsx`、`data.js`、`engine.js`、`worlds.css`分别对应界面、档案、规则和视觉；`src/entry.jsx`选择版本。
 
+通过导航「数据统计」或`?view=stats`查看总战绩提交量及每个匿名设备的提交次数。同设备换队名合并统计，同名不同设备分别统计；同局重试只记一次。匿名标识保存在浏览器，设备数仅近似人数；旧战绩保留为未识别设备，不追溯补算。接口为`GET /api/stats`，支持分页。
+
 以下保留原忍村版说明。
 
 

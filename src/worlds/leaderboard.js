@@ -1,3 +1,5 @@
+import { getDeviceId } from './device.js';
+
 export class OnlineApiError extends Error {
   constructor(message, { status = 0, code = '' } = {}) {
     super(message);
@@ -40,16 +42,23 @@ async function requestJson(path, { signal, ...options } = {}) {
   }
 }
 
-export function createOnlineRun({ teamName, mode = 'free', seed } = {}) {
-  return requestJson('/api/runs', { method: 'POST', body: JSON.stringify({ teamName, mode, ...(seed ? { seed } : {}) }) });
+export async function createOnlineRun({ teamName, mode = 'free', seed } = {}) {
+  const deviceId = getDeviceId();
+  const run = await requestJson('/api/runs', { method: 'POST', body: JSON.stringify({ teamName, mode, deviceId, ...(seed ? { seed } : {}) }) });
+  return { ...run, deviceId };
 }
 
-export function submitOnlineRun({ runId, actions, team } = {}) {
-  return requestJson('/api/leaderboard', { method: 'POST', body: JSON.stringify({ runId, actions, team }) });
+export function submitOnlineRun({ runId, actions, team, deviceId = getDeviceId() } = {}) {
+  return requestJson('/api/leaderboard', { method: 'POST', body: JSON.stringify({ runId, actions, team, deviceId }) });
 }
 
 export function fetchLeaderboard({ entryId, signal } = {}) {
   const params = new URLSearchParams({ limit: '10' });
   if (entryId) params.set('entryId', entryId);
   return requestJson(`/api/leaderboard?${params}`, { signal });
+}
+
+export function fetchStatistics({ page = 1, pageSize = 25, signal } = {}) {
+  const params = new URLSearchParams({ page: String(page), pageSize: String(pageSize) });
+  return requestJson(`/api/stats?${params}`, { signal });
 }

@@ -74,6 +74,12 @@ export function createAppServer({ store, dbPath, distPath = resolve(ROOT, 'dist'
           if (originHost !== requestHost) throw new ApiError(403, '请求来源与当前站点不一致。');
         }
         if (url.pathname === '/api/health' && req.method === 'GET') return json(res, 200, { ok: true, tournamentYear: 2026 });
+        if (url.pathname === '/api/stats' && req.method === 'GET') {
+          return json(res, 200, database.stats({
+            page: url.searchParams.has('page') ? Number(url.searchParams.get('page')) : 1,
+            pageSize: url.searchParams.has('pageSize') ? Number(url.searchParams.get('pageSize')) : 25,
+          }));
+        }
         if (url.pathname === '/api/leaderboard' && req.method === 'GET') {
           const limit = url.searchParams.has('limit') ? Number(url.searchParams.get('limit')) : 10;
           return json(res, 200, database.list({ limit, entryId: url.searchParams.get('entryId') || undefined }));
