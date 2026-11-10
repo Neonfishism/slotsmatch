@@ -1,0 +1,341 @@
+/* Keep the draft board in view without hiding abilities or shrinking the page. */
+.site-header {
+  max-width: 1440px;
+  height: 50px;
+  padding-inline: 32px;
+}
+.brand { gap: 7px; }
+.brand-mark { width: 30px; height: 30px; }
+.brand > span { font-size: 18px; }
+.brand b { font-size: 12px; }
+.nav-button { padding-block: 12px; }
+.history-button { min-height: 34px; padding-block: 7px; }
+.shell { max-width: 1376px; margin-inline: auto; padding: 0 32px; }
+.hero {
+  min-height: 54px;
+  padding: 12px 0;
+  display: flex;
+  align-items: center;
+}
+.hero h1 { margin: 0; font-size: 22px; line-height: 1.35; letter-spacing: .5px; }
+.hero h1 > span { display: inline; margin-left: 7px; }
+.hero-copy { display: flex; align-items: center; justify-content: space-between; gap: 24px; width: 100%; }
+.hero-copy > .eyebrow, .hero-art, .hero-coordinate, .mobile-break { display: none; }
+.hero p { margin: 0; font-size: 11px; line-height: 1.6; letter-spacing: 0; color: #99a78d; }
+.game-toolbar { padding: 0 0 10px; gap: 14px; min-height: 44px; }
+.mode-tabs { padding: 2px; }
+.mode-tabs button { min-height: 30px; padding: 6px 12px; font-size: 11px; }
+.toolbar-hint { font-size: 10px; }
+.new-game { min-height: 32px; }
+.draft-layout, .result-layout { grid-template-columns: minmax(0, 1fr) 280px; gap: 20px; }
+.draft-main {
+  display: grid;
+  grid-template-columns: 270px minmax(0, 1fr);
+  gap: 6px 12px;
+  align-content: start;
+  min-width: 0;
+}
+.draft-main > .section-header,
+.draft-main > .roster-toolbar,
+.draft-main > .ninja-grid,
+.draft-main > .pagination,
+.draft-main > .data-note,
+.draft-main > .ready-panel,
+.draft-main > .village-card.complete { grid-column: 1 / -1; }
+.section-header { min-height: 20px; margin: 0; }
+.section-header h2 { font-size: 12px; }
+.section-number { font-size: 10px; }
+.round-label { font-size: 9px; }
+.round-label b { font-size: 13px; }
+.draft-main > .village-card {
+  min-height: 102px;
+  padding: 12px;
+  gap: 11px;
+  align-items: flex-start;
+}
+.village-emblem { width: 43px; height: 43px; margin-top: 2px; }
+.village-emblem > span { font-size: 25px; }
+.village-copy { max-width: calc(100% - 54px); }
+.village-copy > .eyebrow { font-size: 7px; letter-spacing: 1px; }
+.village-copy h3 { font-size: 23px; line-height: 1.3; margin: 4px 0 0; letter-spacing: 2px; }
+.village-copy p { display: none; }
+.reroll-button { position: absolute; right: 10px; bottom: 8px; min-height: 28px; padding: 4px 7px; font-size: 10px; }
+.reroll-button > b { font-size: 10px; }
+.position-selector { margin: 0; padding: 9px 10px; }
+.position-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.position-selector h3 { font-size: 12px; line-height: 1.5; }
+.position-selector p { margin: 0; font-size: 10px; line-height: 1.5; }
+.position-options { margin-top: 6px; gap: 7px; }
+.position-option, .position-option.selected { min-height: 58px; padding: 6px 8px; gap: 7px; }
+.position-option { border-width: 2px; }
+.position-option > svg:first-child { width: 22px; height: 22px; }
+.position-option strong { font-size: 14px; }
+.position-option small { margin-top: 1px; font-size: 10px; line-height: 1.4; }
+.position-option > svg:last-child:not(:first-child) { width: 13px; height: 13px; }
+.position-option .position-indicator { display: none; }
+.roster-toolbar { margin: 0; min-height: 30px; gap: 10px; }
+.roster-toolbar > div { display: flex; align-items: baseline; gap: 12px; min-width: 0; }
+.roster-toolbar h3 { font-size: 12px; white-space: nowrap; }
+.roster-toolbar p { margin: 0; font-size: 10px; line-height: 1.5; }
+.search-field { height: 29px; width: 150px; max-width: 30%; }
+.search-field input { font-size: 11px; }
+.ninja-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.ninja-entry .ninja-card {
+  display: grid;
+  grid-template-columns: 62px minmax(0, 1fr);
+  gap: 5px 8px;
+  align-content: start;
+  padding: 7px 8px;
+}
+.ninja-entry .ninja-visual { height: 48px; border-radius: 4px; overflow: hidden; }
+.ninja-entry .ninja-visual .portrait > svg { height: 60px; bottom: -6px; }
+.ninja-entry .portrait::before { width: 38px; height: 38px; top: 6px; }
+.ninja-entry .portrait-glyph { font-size: 35px; top: 2px; right: 2px; }
+.ninja-entry .ninja-card-index {
+  left: 2px;
+  top: 2px;
+  font-size: 7px;
+  letter-spacing: 0;
+  background: #efeee6d9;
+  padding: 1px;
+}
+.ninja-entry .ninja-card-body { padding: 0; gap: 4px; }
+.ninja-entry .ninja-card-body h4 { font-size: 15px; line-height: 1.4; letter-spacing: 0; }
+.ninja-entry .ninja-card-body > div > span { margin-top: 3px; font-size: 10px; line-height: 1.4; }
+.ninja-entry .fit-score strong { font-size: 24px; }
+.ninja-entry .fit-score small { font-size: 9px; margin-top: 3px; }
+.ninja-entry .stats-grid {
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 4px 10px;
+  margin: 0;
+  padding-top: 6px;
+}
+.ninja-entry .stat > div:first-child { margin-bottom: 2px; font-size: 10px; line-height: 1.35; }
+.ninja-entry .stat strong { font-size: 12px; }
+.ninja-entry .stat-track { height: 3px; }
+.ninja-entry .trait-tags { grid-column: 1 / -1; margin: 0; gap: 4px; min-height: 19px; }
+.ninja-entry .trait-tags > span { padding: 1px 5px; font-size: 10px; line-height: 1.5; }
+.card-recruit { min-height: 40px; width: calc(100% - 16px); margin: 0 8px 8px; padding: 7px; font-size: 12px; }
+.pagination { min-height: 28px; margin: 0; font-size: 10px; }
+.pagination .icon-button { min-width: 28px; min-height: 28px; }
+.data-note { margin: 0; font-size: 9px; line-height: 1.7; }
+.data-note button { font-size: 9px; }
+.squad-sidebar { padding-top: 28px; }
+.squad-card { padding: 14px 12px 12px; }
+.squad-header .eyebrow { display: none; }
+.squad-header h2 { margin: 0; font-size: 18px; }
+.squad-progress { margin: 11px 0; }
+.squad-slots { gap: 8px; }
+.squad-slot { min-height: 75px; padding: 9px; gap: 9px; }
+.squad-slot .slot-number, .squad-slot.filled .slot-number { width: 38px; min-width: 38px; height: 45px; }
+.squad-slot .slot-number > svg { width: 24px; height: 24px; }
+.squad-slot .slot-info > span, .squad-slot.filled .slot-info > span { font-size: 10px; }
+.squad-slot .slot-info > strong, .squad-slot.filled .slot-info > strong { font-size: 14px; }
+.squad-slot .slot-info > p { display: none; }
+.squad-slot .slot-indicator strong { font-size: 19px; }
+.squad-link { margin-top: 12px; padding-top: 11px; font-size: 11px; }
+.squad-link > strong { font-size: 11px; }
+.bond-list { margin-top: 7px; gap: 4px; }
+.bond-list > p { font-size: 10px; line-height: 1.6; }
+.bond-list > span { font-size: 10px; padding: 2px 5px; }
+.mission-brief { display: grid; grid-template-columns: 1fr auto; gap: 7px; margin-top: 12px; padding: 12px; }
+.brief-title { gap: 8px; }
+.rank-badge { width: 26px; height: 30px; font-size: 22px; }
+.brief-title > span:last-child { font-size: 12px; }
+.brief-title small { font-size: 6px; letter-spacing: 1px; }
+.brief-count { margin: 0; gap: 6px; }
+.brief-count > strong { font-size: 30px; }
+.brief-count > span { font-size: 9px; }
+.brief-count small { display: none; }
+.mission-types { grid-column: 1 / -1; gap: 5px; justify-content: space-between; }
+.mission-types > span { padding: 3px 5px; font-size: 10px; }
+.mission-brief > p, .brief-divider, .sidebar-quote { display: none; }
+.mission-brief .text-button { grid-column: 1 / -1; min-height: 28px; margin: 0; font-size: 10px; justify-self: start; }
+.site-footer { margin-top: 10px; padding: 5px 0; font-size: 8px; min-height: 28px; }
+.site-footer > button { padding: 3px 0; font-size: 8px; }
+.site-footer .brand-mark.small { width: 15px; height: 15px; }
+.ready-panel { min-height: 400px; margin-top: 0; padding: 24px; }
+.ready-panel h2 { font-size: 24px; margin: 9px 0 12px; }
+.ready-panel p { font-size: 12px; }
+.ready-symbol { margin-bottom: 8px; }
+.launch-button { margin-top: 20px; }
+.result-main { padding: 18px 20px; }
+.result-heading h2 { margin-top: 5px; font-size: 17px; }
+.completion-seal { width: 38px; height: 38px; font-size: 13px; }
+.score-display { padding: 14px 0; gap: 22px; }
+.score-display > div > strong { font-size: 64px; }
+.score-display > div > span { margin-top: 4px; }
+.score-separator { margin-top: 16px; }
+.score-title > svg { margin-bottom: 4px; }
+.result-actions { padding: 12px 0 16px; }
+.result-actions .primary-button, .result-actions .secondary-button { min-height: 38px; }
+.mission-list-header { margin-bottom: 8px; }
+.missions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 20px; }
+.mission summary { min-height: 36px; padding: 8px 0; gap: 7px; }
+.mission-index { width: 14px; }
+.mission-type { padding: 2px 4px; }
+.mission-name { font-size: 10px; }
+.mission-outcome { font-size: 9px; }
+.mission-detail { margin-left: 0; padding: 8px; font-size: 11px; }
+.analysis-card { margin-top: 12px; padding: 13px; }
+.analysis-card h3 { margin: 4px 0 9px; font-size: 14px; }
+.analysis-card > p { font-size: 11px; line-height: 1.6; margin-bottom: 6px; }
+.analysis-card .text-button { margin-top: 6px; }
+
+@media (min-width: 1500px) {
+  .shell { max-width: 1440px; }
+  .draft-layout, .result-layout { grid-template-columns: minmax(0, 1fr) 300px; }
+  .draft-main { grid-template-columns: 290px minmax(0, 1fr); }
+}
+
+@media (min-width: 1001px) and (max-width: 1279px) {
+  .shell { padding-inline: 22px; }
+  .site-header { padding-inline: 22px; }
+  .draft-layout, .result-layout { grid-template-columns: minmax(0, 1fr) 246px; gap: 16px; }
+  .draft-main { grid-template-columns: 230px minmax(0, 1fr); }
+  .position-selector p { display: none; }
+  .position-option, .position-option.selected { gap: 5px; padding-inline: 6px; }
+  .position-option > svg:first-child { width: 19px; height: 19px; }
+  .roster-toolbar p { display: none; }
+  .ninja-entry .ninja-card { grid-template-columns: 46px minmax(0, 1fr); gap: 6px; }
+  .ninja-entry .ninja-card-body h4 { font-size: 14px; }
+  .ninja-entry .fit-score strong { font-size: 21px; }
+  .ninja-entry .stats-grid { gap: 6px; }
+  .ninja-entry .stat > div:first-child { font-size: 9px; }
+  .ninja-entry .stat strong { font-size: 11px; }
+  .squad-slot { gap: 7px; padding-inline: 7px; }
+  .squad-slot .slot-number, .squad-slot.filled .slot-number { width: 32px; min-width: 32px; }
+  .mission-types > span { padding-inline: 3px; font-size: 9px; }
+}
+
+@media (max-width: 1000px) {
+  .site-header { padding-inline: 20px; }
+  .shell { padding-inline: 20px; }
+  .hero-copy { display: block; }
+  .hero { min-height: 65px; }
+  .hero h1 { font-size: 21px; }
+  .hero p { margin-top: 4px; font-size: 10px; }
+  .draft-layout { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .draft-main { grid-template-columns: 240px minmax(0, 1fr); }
+  .position-selector p, .roster-toolbar p { display: none; }
+  .position-option, .position-option.selected { gap: 6px; padding-inline: 7px; }
+  .squad-sidebar { padding-top: 0; display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: 14px; align-items: start; }
+  .squad-slots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .squad-slot { min-height: 75px; }
+  .squad-header .eyebrow { display: none; }
+  .squad-header h2 { margin: 0; }
+  .squad-sidebar .mission-brief { margin: 0; }
+  .result-layout { grid-template-columns: minmax(0, 1fr); }
+  .result-aside { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .analysis-card { margin: 0; }
+  .score-display { flex-wrap: nowrap; justify-content: start; }
+  .score-display .score-title { width: auto; max-width: none; margin: 0 0 0 auto; text-align: right; }
+  .result-actions { flex-direction: row; }
+}
+
+@media (max-width: 680px) {
+  .site-header { height: 50px; padding-inline: 14px; gap: 8px; }
+  .brand-mark { width: 27px; height: 27px; }
+  .brand > span { font-size: 17px; }
+  .brand b { font-size: 10px; }
+  .shell { padding-inline: 12px; margin: 0; }
+  .hero { min-height: 76px; padding: 10px 0; }
+  .hero h1 { font-size: 19px; }
+  .hero h1 > span { margin-left: 4px; }
+  .hero p { font-size: 10px; max-width: none; }
+  .game-toolbar { padding-bottom: 10px; gap: 8px; }
+  .mode-tabs button { min-height: 40px; padding: 7px 10px; font-size: 11px; }
+  .new-game { min-height: 40px; font-size: 10px; }
+  .draft-main { display: flex; flex-direction: column; gap: 10px; }
+  .draft-main > .village-card { min-height: 94px; padding: 12px; }
+  .village-copy { max-width: calc(100% - 54px); }
+  .village-copy h3 { font-size: 24px; }
+  .village-emblem { width: 44px; height: 44px; }
+  .reroll-button { min-height: 36px; right: 10px; bottom: 9px; }
+  .position-selector { padding: 10px; }
+  .position-selector h3 { font-size: 13px; }
+  .position-options { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin-top: 8px; }
+  .position-option, .position-option.selected { flex-direction: column; justify-content: center; gap: 3px; min-height: 83px; padding: 6px 3px; text-align: center; }
+  .position-option > span { flex: 0; width: 100%; }
+  .position-option strong { font-size: 14px; }
+  .position-option small { font-size: 9px; }
+  .position-option > svg:first-child { width: 22px; height: 22px; }
+  .position-option > svg:last-child:not(:first-child) { display: none; }
+  .roster-toolbar { min-height: 38px; }
+  .roster-toolbar h3 { font-size: 12px; }
+  .search-field { height: 36px; max-width: 43%; width: 140px; }
+  .search-field input { font-size: 12px; }
+  .ninja-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+  .ninja-entry .ninja-card { grid-template-columns: 40px minmax(0, 1fr); gap: 7px 6px; padding: 8px; }
+  .ninja-entry .ninja-visual { height: 48px; }
+  .ninja-entry .ninja-visual .portrait > svg { height: 60px; }
+  .ninja-entry .ninja-card-index { display: none; }
+  .ninja-entry .ninja-card-body { align-items: start; flex-wrap: wrap; gap: 4px; }
+  .ninja-entry .ninja-card-body h4 { font-size: 13px; }
+  .ninja-entry .ninja-card-body > div > span { display: none; }
+  .ninja-entry .fit-score { flex-direction: row; align-items: baseline; gap: 4px; }
+  .ninja-entry .fit-score strong { font-size: 17px; }
+  .ninja-entry .fit-score small { font-size: 8px; margin-top: 0; }
+  .ninja-entry .stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px 12px; padding-top: 7px; }
+  .ninja-entry .stat > div:first-child { font-size: 10px; }
+  .ninja-entry .stat strong { font-size: 12px; }
+  .ninja-entry .trait-tags { gap: 3px; }
+  .ninja-entry .trait-tags > span { font-size: 9px; padding-inline: 4px; }
+  .card-recruit { min-height: 44px; font-size: 12px; }
+  .pagination { min-height: 40px; font-size: 10px; }
+  .pagination .icon-button { min-height: 40px; min-width: 40px; }
+  .squad-sidebar { display: flex; flex-direction: column; gap: 12px; }
+  .squad-card, .squad-sidebar .mission-brief { width: 100%; }
+  .squad-card { padding: 14px; }
+  .squad-header h2 { font-size: 18px; }
+  .squad-slot { min-height: 86px; padding: 9px 7px; gap: 7px; }
+  .squad-slot .slot-number, .squad-slot.filled .slot-number { width: 29px; min-width: 29px; height: 39px; }
+  .squad-slot .slot-info > strong, .squad-slot.filled .slot-info > strong { font-size: 12px; }
+  .squad-slot .slot-info > span, .squad-slot.filled .slot-info > span { font-size: 10px; }
+  .squad-slot .slot-indicator strong { font-size: 16px; }
+  .mission-brief { grid-template-columns: 1fr auto; gap: 10px; }
+  .mission-types { justify-content: start; }
+  .mission-types > span { font-size: 11px; padding: 4px 8px; }
+  .site-footer { margin-top: 12px; padding: 8px 0; gap: 4px; }
+  .site-footer > button { min-height: 32px; padding: 3px 0; }
+  .ready-panel { min-height: 360px; padding: 22px 12px; }
+  .ready-panel h2 { font-size: 23px; }
+  .ready-panel p { font-size: 12px; }
+  .result-main { padding: 18px 14px; }
+  .result-heading h2 { font-size: 14px; }
+  .score-display { flex-wrap: wrap; gap: 17px; justify-content: center; padding: 20px 0; }
+  .score-display > div > strong { font-size: 64px; }
+  .score-display .score-title { width: 100%; margin: 0; text-align: center; }
+  .result-actions { flex-direction: column; }
+  .missions { grid-template-columns: 1fr; }
+  .mission summary { min-height: 44px; padding: 10px 0; }
+  .mission-name { font-size: 11px; }
+  .result-aside { display: flex; flex-direction: column; }
+}
+
+.village-reel-overlay { --compact-reel-row: 66px; gap: 0; }
+.village-reel-window { height: var(--compact-reel-row); flex-basis: var(--compact-reel-row); }
+.reel-item { height: var(--compact-reel-row); min-height: var(--compact-reel-row); }
+.reel-symbol { width: 42px; height: 42px; flex-basis: 42px; font-size: 27px; }
+.reel-item strong { font-size: 25px; }
+.village-reel-track { animation-name: nindo-compact-reel; }
+@keyframes nindo-compact-reel { to { transform: translateY(calc(var(--reel-stop) * var(--compact-reel-row) * -1)); } }
+
+/* Short laptop screens spend their height on the playable board. */
+@media (min-width: 1001px) and (max-height: 800px) {
+  .hero, .site-footer { display: none; }
+  .game-toolbar { padding-top: 5px; padding-bottom: 5px; }
+  .squad-sidebar .squad-slot { min-height: 70px; }
+  .result-main { padding-block: 14px; }
+  .score-display { padding-block: 8px; }
+  .result-actions { padding-block: 8px 10px; }
+  .mission summary { min-height: 34px; padding-block: 7px; }
+  .result-aside .squad-slot { min-height: 66px; }
+  .result-aside .squad-card { padding-top: 12px; }
+  .result-aside .squad-progress { margin-block: 9px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .village-reel-track { animation: none; transform: translateY(calc(var(--reel-stop) * var(--compact-reel-row) * -1)); }
+}

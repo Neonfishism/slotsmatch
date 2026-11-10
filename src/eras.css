@@ -1,0 +1,58 @@
+/* Two equal reels share one draw, matching the village-and-era game rule. */
+.draft-main { grid-template-columns: minmax(360px, 1.15fr) minmax(0, 1fr); }
+.draw-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; min-width: 0; }
+.draw-slot { --slot-bright: #f0b359; --slot-edge: #ba7e2e; --slot-dark: #7f4e1c; --slot-glow: #f0b35970; --slot-band: #f0b35926; --draw-row: 46px; min-width: 0; height: 94px; padding: 4px 7px 7px; border: 1px solid var(--slot-bright); border-radius: 13px; background: linear-gradient(180deg, var(--slot-bright), var(--slot-edge) 32%, var(--slot-dark)); box-shadow: inset 0 1px 0 #fff6, inset 0 -2px 0 #0003, 0 3px 10px #0002; }
+.draw-slot-era { --slot-bright: #bc91ed; --slot-edge: #8b55c5; --slot-dark: #563781; --slot-glow: #bc91ed80; --slot-band: #bc91ed2e; }
+.draw-slot-label { display: flex; align-items: baseline; justify-content: center; gap: 6px; height: 18px; color: #23170c; line-height: 1.2; }
+.draw-slot-label > strong { font-size: 11px; font-weight: 800; }
+.draw-slot-label > span { font: 700 9px/1 Arial, sans-serif; letter-spacing: 1px; opacity: .7; }
+.draw-slot-era .draw-slot-label { color: #21112f; }
+.draw-reel-window { position: relative; height: 64px; overflow: hidden; border: 2px solid #30383a; border-radius: 10px; background: #1c232b; box-shadow: 0 0 0 1px #fae5ba9c, inset 0 0 12px #000; }
+.draw-slot-era .draw-reel-window { box-shadow: 0 0 0 1px #e3c6ff9c, inset 0 0 12px #000; }
+.draw-reel-track { transform: translateY(calc(7px - var(--draw-stop) * var(--draw-row))); }
+.draw-reel-value { display: flex; align-items: center; justify-content: center; min-width: 0; height: var(--draw-row); padding-inline: 8px; color: #fff4da; font-size: 22px; font-weight: 800; line-height: 1; letter-spacing: 1px; white-space: nowrap; text-shadow: 0 2px 2px #000b; }
+.draw-slot-era .draw-reel-value { color: #f0e7ff; font-size: 21px; letter-spacing: 0; }
+.draw-reel-window::after { content: ''; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(180deg, #03070aee, #03070a4d 24%, transparent 42%, #fff1 54%, transparent 65%, #03070a5c 80%, #03070aee); pointer-events: none; }
+.draw-reel-glint { position: absolute; z-index: 1; inset: 0; border-left: 4px solid var(--slot-edge); border-right: 4px solid var(--slot-edge); border-radius: 14px / 50%; box-shadow: inset 2px 0 0 #fbe2a35e, inset -2px 0 0 #fbe2a35e; pointer-events: none; }
+.draw-slot.is-spinning { opacity: 1; filter: none; border-color: #fff0c9; box-shadow: inset 0 1px 0 #fff9, 0 0 0 2px var(--slot-bright), 0 0 22px var(--slot-glow); }
+.draw-slot-era.is-spinning { border-color: #f1dfff; }
+.draw-slot.is-spinning .draw-reel-window { border-color: var(--slot-bright); }
+.draw-slot.is-spinning .draw-reel-window::before { content: ''; position: absolute; z-index: 1; top: 50%; left: 4px; right: 4px; height: var(--draw-row); transform: translateY(-50%); border-block: 1px solid var(--slot-bright); background: var(--slot-band); pointer-events: none; }
+.draw-slot.is-spinning .draw-reel-track { animation: nindo-paired-reel var(--draw-duration) linear both; will-change: transform; }
+@keyframes nindo-paired-reel {
+  from { transform: translateY(7px); }
+  70% { transform: translateY(calc(7px - var(--draw-stop) * .823529 * var(--draw-row))); animation-timing-function: cubic-bezier(.333333, .666667, .666667, 1); }
+  to { transform: translateY(calc(7px - var(--draw-stop) * var(--draw-row))); }
+}
+.draft-instruction { gap: 6px; padding: 4px 12px; }
+.draft-instruction h3 { margin: 0 0 3px; font-size: 15px; }
+.draft-instruction p { font-size: 10px; }
+.paired-reroll { display: flex; align-items: center; justify-content: center; gap: 7px; align-self: flex-start; min-height: 34px; padding: 5px 11px; border: 1px solid #a28b5c; border-radius: 5px; background: #373a23; color: #f4d6a4; font-size: 11px; }
+.paired-reroll > b { padding-left: 8px; border-left: 1px solid #cdb77b4d; font: 500 10px/1.2 Arial, sans-serif; }
+.paired-reroll:hover:not(:disabled) { background: #57452a; border-color: #e2b36a; }
+.paired-reroll:disabled { opacity: .5; cursor: default; }
+.paired-reroll:focus-visible { outline: 2px solid #f6c789; outline-offset: 3px; }
+.squad-slot .slot-info > p.slot-era { display: block; margin-top: 1px; font-size: 9px; line-height: 1.5; color: #b2ba8e; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.archive-era-tabs { display: flex; gap: 7px; flex-wrap: wrap; padding-top: 14px; }
+.archive-era-tabs > button { min-height: 36px; padding: 6px 11px; border: 1px solid #4d5e3d; border-radius: 5px; background: #202c1c; color: #aab993; font-size: 12px; }
+.archive-era-tabs > button.selected { border-color: #c58d50; background: #433e27; color: #f2c78c; }
+.archive-era-tabs > button:hover:not(:disabled) { border-color: #dba66c; }
+.archive-era-tabs > button:disabled { opacity: .35; cursor: default; }
+.archive-era-description { display: flex; align-items: start; justify-content: space-between; gap: 15px; margin: 12px 0 16px; color: #9aab89; font-size: 11px; line-height: 1.8; }
+.archive-era-description > span { flex-shrink: 0; color: #d3b182; }
+.archive-list button > span { min-width: 0; }
+.archive-list small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@media (max-width: 680px) {
+  .draw-pair { width: 100%; gap: 10px; }
+  .draw-reel-value { font-size: 21px; }
+  .draw-slot-era .draw-reel-value { font-size: 19px; }
+  .draft-instruction { display: flex; align-items: center; padding: 0; border: 0; }
+  .draw-guidance { display: none; }
+  .paired-reroll { min-height: 44px; align-self: stretch; }
+  .archive-era-tabs { gap: 5px; }
+  .archive-era-tabs > button { min-height: 40px; font-size: 11px; padding-inline: 8px; }
+  .archive-era-description { font-size: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .draw-slot.is-spinning .draw-reel-track { animation: none; }
+}

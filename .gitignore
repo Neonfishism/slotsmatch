@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.DS_Store
+.playwright-mcp/
+work/
+.npm-cache/
+storage/
+.env
+.env.*
+__pycache__/
+*.py[cod]
